@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adflearnign1"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"AzureMySql1_connectionString": {
+			"value": ""
+		},
+		"event_based_trigg_for_hourly_monthly_files_properties_typeProperties_scope": {
+			"value": "/subscriptions/13c37002-1be9-4306-b563-e598127ef614/resourceGroups/adfresoucegroup/providers/Microsoft.Storage/storageAccounts/adfstorageacc0"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
