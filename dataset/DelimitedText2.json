@@ -1,0 +1,50 @@
+{
+	"name": "DelimitedText2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "monthly_data_ - Copy.txt",
+				"folderPath": "input",
+				"container": "adfcontainer"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": ""
+		},
+		"schema": [
+			{
+				"name": " sender_id ",
+				"type": "String"
+			},
+			{
+				"name": " send_to_id ",
+				"type": "String"
+			},
+			{
+				"name": " request_date ",
+				"type": "String"
+			},
+			{
+				"name": " requester_id ",
+				"type": "String"
+			},
+			{
+				"name": " accepter_id ",
+				"type": "String"
+			},
+			{
+				"name": " accept_date",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

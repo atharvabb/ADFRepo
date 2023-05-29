@@ -1,0 +1,25 @@
+{
+	"name": "AzureMySqlTable2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureMySql1",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"dbName": {
+					"value": "@dataset().dbNamesink",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"dbNamesink": {
+				"type": "String",
+				"defaultValue": "employeedb"
+			}
+		},
+		"annotations": [],
+		"type": "AzureMySqlTable",
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

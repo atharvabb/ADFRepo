@@ -1,0 +1,60 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "Json2",
+						"type": "DatasetReference"
+					},
+					"name": "cust1id1gender"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "output1",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "filter1"
+				}
+			],
+			"scriptLines": [
+				"parameters{",
+				"     filter as integer",
+				"}",
+				"source(output(",
+				"          id as integer,",
+				"          name as string,",
+				"          age as integer,",
+				"          skills as string[],",
+				"          address as (state as string, city as string, zipcode as string),",
+				"          contact as (mobile as string, email as string)",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     documentForm: 'arrayOfDocuments',",
+				"     partitionBy('hash', 1)) ~> cust1id1gender",
+				"cust1id1gender filter(id>$filter) ~> filter1",
+				"filter1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     partitionFileNames:['dataflow_para.txt'],",
+				"     mapColumn(",
+				"          id,",
+				"          name,",
+				"          age = skills,",
+				"          state = address.state",
+				"     ),",
+				"     partitionBy('hash', 1)) ~> sink1"
+			]
+		}
+	}
+}
