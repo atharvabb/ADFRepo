@@ -11,6 +11,12 @@
 		"AzureMySql1_connectionString": {
 			"value": ""
 		},
+		"AzureBlobStorage2_properties_typeProperties_connectionString_secretName": {
+			"value": "KV-adfcontainer"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://kv-atharva.vault.azure.net/"
+		},
 		"event_based_trigg_for_hourly_monthly_files_properties_typeProperties_scope": {
 			"value": "/subscriptions/13c37002-1be9-4306-b563-e598127ef614/resourceGroups/adfresoucegroup/providers/Microsoft.Storage/storageAccounts/adfstorageacc0"
 		},
