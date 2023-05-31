@@ -20,13 +20,10 @@
 						"type": "DatasetReference"
 					},
 					"fieldList": [
-						"childItems",
-						"itemType",
-						"lastModified"
+						"childItems"
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
-						"modifiedDatetimeStart": "2023-05-31T00:00:00.000Z",
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -35,8 +32,8 @@
 				}
 			},
 			{
-				"name": "ForEach1",
-				"type": "ForEach",
+				"name": "Filter1",
+				"type": "Filter",
 				"dependsOn": [
 					{
 						"activity": "Get Metadata1",
@@ -48,25 +45,13 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Get Metadata1').output.itemName",
+						"value": "@activity('Get Metadata1').output.childItems",
 						"type": "Expression"
 					},
-					"isSequential": true,
-					"activities": [
-						{
-							"name": "Set variable1",
-							"type": "SetVariable",
-							"dependsOn": [],
-							"userProperties": [],
-							"typeProperties": {
-								"variableName": "filename",
-								"value": {
-									"value": "@item()",
-									"type": "Expression"
-								}
-							}
-						}
-					]
+					"condition": {
+						"value": "@or(\r\n    contains(item().name,'FILE1.txt'),\r\n    contains(item().name,'FILE1.txt')\r\n)\r\n    ",
+						"type": "Expression"
+					}
 				}
 			}
 		],
